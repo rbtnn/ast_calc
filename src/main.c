@@ -31,28 +31,23 @@ void comsume_spaces(char* p, int* pi)
 
 AST* comsume_digit(char* p, int* pi)
 {
-	AST* ast = alloc_ast();
 	int ok = 0;
-	int i = *pi;
-	int n = 0;
+	int val = 0;
 	while (('0' <= p[*pi]) && (p[*pi] <= '9'))
 	{
-		n = n * 10 + (p[*pi] - '0');
+		val = val * 10 + (p[*pi] - '0');
 		ok = 1;
 		(*pi)++;
 	}
 	if (ok)
 	{
+		AST* ast = alloc_ast();
 		ast->type = VALUE;
-		ast->val = n;
+		ast->val = val;
 		return ast;
 	}
 	else
-	{
-		*pi = i;
-		free(ast);
 		return NULL;
-	}
 }
 
 void print_line(int indent, char* s)
@@ -210,9 +205,7 @@ AST* make_ast_expr3(char* p, int* pi)
 		}
 	}
 	else
-	{
 		return comsume_digit(p, pi);
-	}
 }
 
 AST* make_ast_expr2(char* p, int* pi)

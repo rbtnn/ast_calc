@@ -15,6 +15,6 @@ clean: FORCE
 	cmd.exe /C "del /q ast_calc.exe"
 
 test: build
-	.\ast_calc.exe "12 + (3 - 4) / 56 - (7 - 8) * 9"
+	.\ast_calc.exe " 12 + ( 3 - 4 ) / 56 - ( 7 - 8 ) * 9 "
 
 FORCE:

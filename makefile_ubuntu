@@ -24,8 +24,8 @@ endif
 
 test: build
 ifeq ($(OS),Windows_NT)
-	.\ast_calc.exe "12 + (3 - 4) / 56 - (7 - 8) * 9"
+	.\ast_calc.exe " 12 + ( 3 - 4 ) / 56 - ( 7 - 8 ) * 9 "
 else
-	./ast_calc     "12 + (3 - 4) / 56 - (7 - 8) * 9"
+	./ast_calc     " 12 + ( 3 - 4 ) / 56 - ( 7 - 8 ) * 9 "
 endif
 
