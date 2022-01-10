@@ -1,0 +1,20 @@
+name: windows-latest
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x86
+
+      - name: Make
+        shell: cmd
+        run: |
+          nmake /nologo /f makefile_windows

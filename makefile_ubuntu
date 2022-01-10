@@ -1,0 +1,31 @@
+
+MAKE_OBJ=gcc -c
+HEADERS=
+
+.PHONY: all clean build test
+
+all: test
+
+build: main.o
+	gcc -o ast_calc $+
+	-ctags -R
+
+main.o: src/main.c $(HEADERS)
+	$(MAKE_OBJ) src/main.c
+
+clean:
+ifeq ($(OS),Windows_NT)
+	cmd.exe /C "del /q *.o"
+	cmd.exe /C "del /q ast_calc.exe"
+else
+	rm *.o
+	rm ast_calc
+endif
+
+test: build
+ifeq ($(OS),Windows_NT)
+	.\ast_calc.exe "12 + (3 - 4) / 56 - (7 - 8) * 9"
+else
+	./ast_calc     "12 + (3 - 4) / 56 - (7 - 8) * 9"
+endif
+

@@ -1,0 +1,5 @@
+
+ast_calc
+*.o
+*.obj
+*.exe

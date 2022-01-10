@@ -1,0 +1,14 @@
+name: ubuntu-latest
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Make
+        run: |
+          make -f makefile_ubuntu

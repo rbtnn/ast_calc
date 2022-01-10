@@ -1,0 +1,20 @@
+
+MAKE_OBJ=cl /nologo /c /O2
+HEADERS=
+
+all: test
+
+build: main.obj
+	cl /nologo $** /Feast_calc
+
+main.obj: src/main.c $(HEADERS)
+	$(MAKE_OBJ) src/main.c
+
+clean: FORCE
+	cmd.exe /C "del /q *.obj"
+	cmd.exe /C "del /q ast_calc.exe"
+
+test: build
+	.\ast_calc.exe "12 + (3 - 4) / 56 - (7 - 8) * 9"
+
+FORCE:
